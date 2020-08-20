@@ -11,7 +11,8 @@ connex_app = connexion.App(__name__, specification_dir=basedir)
 # Get the Flask app instance
 app = connex_app.app
 
-db_uri = "mysql://poolAPI:" + os.environ["POOL_API"] + "@localhost/pool"
+# ToDo: Figure out how to set Env Variables and change poolAPI Password
+db_uri = "mysql://poolAPI:" + "Os&3MQ5U&H8LdaN7R6mf2" + "@localhost/pool"
 
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
