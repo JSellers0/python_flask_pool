@@ -1,0 +1,51 @@
+API Server:
+RockAPI
+Debian 8 headless server virtual machine
+
+Web Server:
+RockWeb
+Debian 8 headless server virtual machine
+
+Front End:
+
+4 Buttons: 
+
+| Test | Report |
+| Use | Service |
+
+Testing: DB Done
+* Date
+* Type
+* Chem Levels
+** Need to get all Chem abbreviations from test labels
+
+Service:
+* Chemicals - DB Done
+** Purchased - DB Done
+** Used - DB Done
+* Water DB Done
+** Date
+** Duration
+** Function to convert Duration to Gallons based on timing 5 gallon bucket fill
+** Function to convert gallons to cost based on water rate
+* Pro Service - DB Done
+* Cleaning - DB Done
+
+Use:
+* Date
+* # of People
+* # of Dogs
+* Duration
+
+Report:
+** Views or Stored Procedures?
+* Chemical Inventory
+* Cost per timerange (year default)
+* Cost per category (chem, service, water, accessories)
+* Cost per chem
+* Chem Usage per year (to pre-order for next year)
+* ML predictive alerts for adding Chemicals
+** Weather
+** Historic Usage
+** Time since last add
+
