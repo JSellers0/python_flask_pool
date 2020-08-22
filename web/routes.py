@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash
 
-from web.forms import *
+from forms import *
 
-pool = Blueprint("pool", __name__)
+
+pool = Flask(__name__)
+pool.secret_key = b';aeirja_)(_9u-a9jdfae90ej-e09!@aldjfa;'
 
 @pool.route("/pool")
 def home():
