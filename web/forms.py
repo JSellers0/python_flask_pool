@@ -4,15 +4,11 @@ from wtforms.fields.html5 import DateField
 from wtforms.validators import (DataRequired, Length, Email, EqualTo, ValidationError)
 
 """
-test - common three on top: additional fields revealed with JS
-water
-clean
-service
 activity
 reporting
 """
 
-class Chemical_New(FlaskForm):
+class Chemical_New_Form(FlaskForm):
     name = StringField("Chemical Name", validators=[DataRequired(), Length(max=50)])
     brand = StringField("Chemical Brand", validators=[DataRequired(), Length(max=50)])
     units = StringField("Measure Unit", validators=[DataRequired(), Length(max=10)])
@@ -20,37 +16,37 @@ class Chemical_New(FlaskForm):
 
 # ToDo: Probably build this with javascript natively so I can add more than one at a time.
 # Will have to investigate if Flask can accomplish this.
-class Chemical_Purchase(FlaskForm):
+class Chemical_Purchase_Form(FlaskForm):
     name = SelectField("Chemical Name", validators=[DataRequired()])
     store = SelectField("Store Name", validators=[DataRequired()])
-    date = DateField("Purchase Date")
-    qty = StringField("Amount Purchased")
-    cost = StringField("Cost")
+    date = DateField("Purchase Date", validators=[DataRequired()])
+    qty = StringField("Amount Purchased", validators=[DataRequired()])
+    cost = StringField("Cost", validators=[DataRequired()])
     submit = SubmitField("Submit")
 
-class Chemical_Use(FlaskForm):
+class Chemical_Use_Form(FlaskForm):
     name = SelectField("Chemical Name", validators=[DataRequired()])
     date = StringField("Date/Time Used")
     qty = StringField("Amount Used")
     submit = SubmitField("Submit")
 
-class Test(FlaskForm):
+class Test_Form(FlaskForm):
     name = SelectField("Test Used", validators=[DataRequired()])
-    chl_free = StringField("Free Chlorine")
-    ph = StringField("Ph Balance")
+    chl_free = StringField("Free Chlorine", validators=[DataRequired()])
+    ph = StringField("Ph Balance", validators=[DataRequired()])
     alk = StringField("Alkalinity")
     chl_tot = StringField("Total Chlorine")
     stab = StringField("Stabalizer")
     hrd = StringField("Hardness")
     submit = SubmitField("Submit Test")
 
-class Water(FlaskForm):
+class Water_Form(FlaskForm):
     date = DateField("Purchase Date")
     duration = StringField("Fill Duration")
     # gallons and cost will be calculated by the database
     submit = SubmitField("Submit")
 
-class Service(FlaskForm):
+class Service_Form(FlaskForm):
     date = DateField("Service Date")
     code = StringField("Service Code")
     desc = StringField("Description")
@@ -58,7 +54,7 @@ class Service(FlaskForm):
     cost = StringField("Service Cost")
     submit = SubmitField("Submit")
 
-class Clean(FlaskForm):
+class Clean_Form(FlaskForm):
     date = DateField("Clean Date")
     code = StringField("Activity Code")
     desc = StringField("Description")

@@ -1,15 +1,10 @@
 {% extends "_template.html" %}
 
-{% block head %}
-
-
-{% endblock head %}
-
 {% block body %}
 
-<button class="btn_main">Test</button>
-<button class="btn_main">Report</button>
-<button class="btn_main">Service</button>
-<button class="btn_main">Use</button>
+<a class="btn_home" href={{ url_for("pool.test") }}>Test</a>
+<a class="btn_home" href={{ url_for("pool.report") }}>Report</a>
+<a class="btn_home" href={{ url_for("pool.maint") }}>Service</a>
+<a class="btn_home" href={{ url_for("pool.activity") }}>Use</a>
 
 {% endblock body %}

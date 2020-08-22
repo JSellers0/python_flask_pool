@@ -1,50 +1,60 @@
-from flask import Flask, render_template, url_for, redirect, request, flash
+from flask import Blueprint, render_template, url_for, redirect, request, flash
 
-from forms import *
+from web.forms import *
 
-app = Flask(__name__)
-app.secret_key = b';aeirja_)(_9u-a9jdfae90ej-e09!@aldjfa;'
+pool = Blueprint("pool", __name__)
 
-@app.route("/pool")
+@pool.route("/pool")
 def home():
     return render_template("home.html")
 
-@app.route("/pool/maint")
+@pool.route("/pool/test")
+def test():
+    form = Test_Form()
+    return render_template("test.html", form=form)
+
+@pool.route("/pool/maint")
 def maint():
     return render_template("maint_root.html")
 
-@app.route("/pool/test")
-def test():
-    return render_template("test.html")
-
-@app.route("/pool/maint/chem")
+@pool.route("/pool/maint/chem")
 def chem_root():
     return render_template("chem_root.html")
 
-@app.route("/pool/maint/chem/new")
+@pool.route("/pool/maint/chem/new")
 def chem_new():
-    return render_template("chem_new.html")
+    form = Chemical_New_Form()
+    return render_template("chem_new.html", form=form)
 
-@app.route("/pool/maint/chem/purch")
+@pool.route("/pool/maint/chem/purch")
 def chem_purch():
-    return render_template("chem_purch.html")
+    form = Chemical_Purchase_Form()
+    return render_template("chem_purch.html", form=form)
 
-@app.route("/pool/maint/chem/use")
+@pool.route("/pool/maint/chem/use")
 def chem_use():
-    return render_template("chem_use.html")
+    form = Chemical_Use_Form()
+    return render_template("chem_use.html", form=form)
 
-@app.route("/pool/maint/water")
+@pool.route("/pool/maint/water")
 def water():
-    return render_template("water.html")
+    form = Water_Form()
+    return render_template("water.html", form=form)
 
-@app.route("/pool/maint/service")
+@pool.route("/pool/maint/service")
 def service():
-    return render_template("service.html")
+    form = Service_Form()
+    return render_template("service.html", form=form)
 
-@app.route("/pool/maint/clean")
+@pool.route("/pool/maint/clean")
 def clean():
-    return render_template("clean.html")
+    form = Clean_Form()
+    return render_template("clean.html", form=form)
 
-@app.route("/pool/activity")
+@pool.route("/pool/activity")
 def activity():
     return render_template("activity.html")
+
+@pool.route("/pool/report")
+def report():
+    return render_template("report_main.html")

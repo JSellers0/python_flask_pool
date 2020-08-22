@@ -1,9 +1,11 @@
 {% extends "_template.html" %}
 
-{% block head %}
-
-{% endblock head %}
-
 {% block body %}
+
+<a class="btn_maint" href={{ url_for("pool.chem_root") }}>Chemicals</a>
+<a class="btn_maint" href={{ url_for("pool.water") }}>Water</a>
+<a class="btn_maint" href={{ url_for("pool.clean") }}>Clean</a>
+<a class="btn_maint" href={{ url_for("pool.service") }}>Service</a>
+<a class="btn_chem" href={{ url_for("pool.home") }}>Main</a>
 
 {% endblock body %}

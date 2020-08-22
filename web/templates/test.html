@@ -1,9 +1,76 @@
 {% extends "_template.html" %}
 
-{% block head %}
-
-{% endblock head %}
-
 {% block body %}
-
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend>Enter Test Results</legend>
+            <div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.chl_free.label(class="form-control-label") }}
+                {% if form.chl_free.errors %}
+                    {{ form.chl_free(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.chl_free.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.chl_free(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.ph.label(class="form-control-label") }}
+                {% if form.ph.errors %}
+                    {{ form.ph(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.ph.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.ph(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.alk.label(class="form-control-label") }}
+                {% if form.alk.errors %}
+                    {{ form.alk(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.alk.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.alk(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="extra form-group">
+                {{ form.chl_tot.label(class="form-control-label") }}
+                {{ form.chl_tot(class="form-control form-control-lg") }}
+                {{ form.stab.label(class="form-control-label") }}
+                {{ form.stab(class="form-control form-control-lg") }}
+                {{ form.hrd.label(class="form-control-label") }}
+                {{ form.hrd(class="form-control form-control-lg") }}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+            <a class="btn btn-outline-info" href={{ url_for("pool.home") }}>Back</a>
+        </div>
+    </form>
+</div>
 {% endblock body %}
