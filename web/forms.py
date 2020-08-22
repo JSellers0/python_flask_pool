@@ -31,14 +31,18 @@ class Chemical_Use_Form(FlaskForm):
     submit = SubmitField("Submit")
 
 class Test_Form(FlaskForm):
-    name = SelectField("Test Used", validators=[DataRequired()])
+    name = SelectField("Test Used", choices=[(None, 'Choose a Test')], validators=[DataRequired()])
     chl_free = StringField("Free Chlorine", validators=[DataRequired()])
     ph = StringField("Ph Balance", validators=[DataRequired()])
     alk = StringField("Alkalinity")
     chl_tot = StringField("Total Chlorine")
-    stab = StringField("Stabalizer")
+    stab = StringField("Stabilizer")
     hrd = StringField("Hardness")
     submit = SubmitField("Submit Test")
+
+class Test_New_Form(FlaskForm):
+    name = StringField("Test Name", validators=[DataRequired()])
+    submit = SubmitField("Create New Test")
 
 class Water_Form(FlaskForm):
     date = DateField("Purchase Date")

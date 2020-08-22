@@ -15,6 +15,11 @@ def test():
     form = Test_Form()
     return render_template("test.html", form=form)
 
+@pool.route("/pool/test/new")
+def test_new():
+    form = Test_New_Form()
+    return render_template("test_new.html", form=form)
+
 @pool.route("/pool/maint")
 def maint():
     return render_template("maint_root.html")

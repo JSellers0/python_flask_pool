@@ -1,0 +1,32 @@
+{% extends "_template.html" %}
+
+{% block body %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend>Enter Test Results</legend>
+            <div class="form-group">
+                {{ form.name.label(class="form-control-label") }}
+                {% if form.name.errors %}
+                    {{ form.name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.name.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+            <a class="btn btn-outline-info" href={{ url_for("test") }}>Back</a>
+        </div>
+    </form>
+</div>
+<p>
+    <a href={{ url_for("home") }}>Back to Main Menu</a>
+</p>
+{% endblock body %}

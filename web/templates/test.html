@@ -2,6 +2,7 @@
 
 {% block body %}
 <div class="content-section">
+    <a href={{ url_for("test_new") }}>Add New Test</a>
     <form method="POST" action="">
         {{ form.hidden_tag()}}
         <fieldset class="form-group">
