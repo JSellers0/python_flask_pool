@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Pool API
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api/pool
+
+paths:
+  /chemicals:
+    get:
+      operationId: chemicals.read_all
+      tags:
+        - Chemicals
+      summary: Read all Chemicals.
+      description: Read all Chemicals from Chemicals table sorted by ChemicalID.
+      responses:
+        200:
+          description: Successfully read Chemicals table.
+          schema:
+            type: array
+            items:
+              properties:
+                chemicalid:
+                  type: integer
+                  description: ID of the Chemical returned.
+                chemical_name:
+                  type: string
+                  description: Name of the Chemical returned.
+                chemical_brand:
+                  type: string
+                  description: Brand of the Chemical returned.
+                chemical_unit:
+                  type: string
+                  description: Unit of measurement for the Chemical returned.
+    post:
+      operationId: chemicals.create
+      tags:
+        - Chemicals
+      summary: Create a Chemical.
+      description: Insert a new Chemical into the Chemicals table.
+      parameters:
+        - name: chemical
+          in: body
+          description: JSON with Chemical components to insert.
+          required: True
+          schema:
+            type: object
+            properties:
+              chemical_name:
+                type: string
+                description: Name of the Chemical to insert.
+              chemical_brand:
+                type: string
+                description: Brand of the Chemical to insert.
+              chemical_unit:
+                type: string
+                description: Unit of measurement for the Chemical to insert.
+      responses:
+        201:
+          description: Successfully inserted Chemical into Chemicals table.
+        409:
+          description: Submitted Chemical already exists in Chemicals table.
+
+  /tests/types:
+    get:
+      operationId: tests.get_types
+      tags:
+        - Tests
+      summary: Get Test Types.
+      description: Get all created types of tests sorted by testtypeid.
+      responses:
+        200:
+          description: Successfully read Test Types table.
+          schema:
+            type: array
+            items:
+              properties:
+                testtypeid:
+                  type: integer
+                  description: ID of the Test Type returned.
+                test_name:
+                  
+
+
