@@ -5,7 +5,7 @@ class Chemical(db.Model):
     chemicalid = db.Column(db.Integer, primary_key=True)
     chemical_name = db.Column(db.String(50), nullable=False)
     chemical_brand = db.Column(db.String(50), nullable=False)
-    chemical_units = db.Column(db.String(10), nullable=False)
+    chemical_unit = db.Column(db.String(10), nullable=False)
 
     def __repr__(self):
         return "Chemical({}, {}, {})".format(chemical_id, chemical_name, chemical_brand)
@@ -35,14 +35,19 @@ class Chemical_Use(db.Model):
     used_qty = db.Column(db.Integer, nullable=False)
 
 class Test(db.Model):
+    # ToDo: Lookup callback to add test_name
     chemtestid = db.Column(db.Integer, primary_key=True)
-    test_type = db.Column(db.String(50), nullable=False)
+    testtypeid = db.Column(db.Integer, db.Foreign_Key("test_type.testtypeid"), nullable=False)
     chl_free = db.Column(db.Float(precision=2), nullable=False)
     ph = db.Column(db.Float(precision=2), nullable=False)
     alk = db.Column(db.Integer, nullable=False)
     chl_tot = db.Column(db.Integer)
     stab = db.Column(db.Integer)
     hrd = db.Column(db.Integer)
+
+class Test_Type(db.Model):
+    testtypeid = db.Column(db.Integer, primary_key=True)
+    test_name = db.Column(db.String(50), nullable=False)
 
 class Water(db.Model):
     wateraddid = db.Column(db.Integer, primary_key=True)
@@ -64,6 +69,10 @@ class Clean(db.Model):
     clean_date = db.Column(db.DateTime, nullable=False)
     clean_code = db.Column(db.String(50), nullable=False)
     clean_desc = db.Column(db.String(250))
+
+class Test_Type(db.Model):
+    test_typeid = db.Column(db.Integer, primary_key=True)
+
 
 
 
