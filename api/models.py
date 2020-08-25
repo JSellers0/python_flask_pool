@@ -69,12 +69,3 @@ class Clean(db.Model):
     clean_date = db.Column(db.DateTime, nullable=False)
     clean_code = db.Column(db.String(50), nullable=False)
     clean_desc = db.Column(db.String(250))
-
-class Test_Type(db.Model):
-    test_typeid = db.Column(db.Integer, primary_key=True)
-
-
-
-
-
-
