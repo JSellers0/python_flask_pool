@@ -15,6 +15,10 @@ class ChemSchema(ma.ModelSchema):
         model = Chemicals
         sqla_session = db.session
 
+class Store(db.Model):
+    storeid = db.Column(db.Integer, primary_key=True)
+    store_name = db.Column(db.String(50), nullable=False)
+    
 class Chemicals_Purchase(db.Model):
     chempurchid = db.Column(db.Integer, primary_key=True)
     chemicalid = db.Column(db.Integer, db.ForeignKey("chemicals.chemicalid"), nullable=False)
@@ -22,10 +26,6 @@ class Chemicals_Purchase(db.Model):
     purchase_date = db.Column(db.DateTime, nullable=False)
     purchase_qty = db.Column(db.Integer, nullable=False)
     purchase_cost = db.Column(db.Numeric(precision=6, scale=2), nullable=False)
-
-class Store(db.Model):
-    storeid = db.Column(db.Integer, primary_key=True)
-    store_name = db.Column(db.String(50), nullable=False)
 
 class ChemPurchSchema(ma.ModelSchema):
     class Meta:
@@ -38,6 +38,10 @@ class Chemical_Use(db.Model):
     used_date = db.Column(db.DateTime, nullable=False)
     used_qty = db.Column(db.Integer, nullable=False)
 
+class TestType(db.Model):
+    testtypeid = db.Column(db.Integer, primary_key=True)
+    test_name = db.Column(db.String(50), nullable=False)
+
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
     chemtestid = db.Column(db.Integer, primary_key=True)
@@ -48,10 +52,6 @@ class Test(db.Model):
     chl_tot = db.Column(db.Integer)
     stab = db.Column(db.Integer)
     hrd = db.Column(db.Integer)
-
-class TestType(db.Model):
-    testtypeid = db.Column(db.Integer, primary_key=True)
-    test_name = db.Column(db.String(50), nullable=False)
 
 class Water(db.Model):
     wateraddid = db.Column(db.Integer, primary_key=True)
