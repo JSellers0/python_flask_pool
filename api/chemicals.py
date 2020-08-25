@@ -3,8 +3,8 @@ This is the chemical module and supports all REST actions for the chemical table
 """
 
 from flask import abort
-from models import Chemical, ChemicalSchema
-from config import db
+from api.models import Chemical, ChemicalSchema
+from api.config import db
 
 def read_all():
     chemicals = Chemical.query.order_by(Chemical.chemical_name).all()
@@ -22,9 +22,9 @@ def read_name(chemical_name):
 def read_brand(chemical_brand):
     pass
 
-def create():
+def create(chemical):
     # ToDo: Filter by name and brand
-    existing_chemical = Chemical.query.filter(Chemical.chemical_name == chemical_name).one_or_none()
+    existing_chemical = Chemical.query.filter(Chemical.chemical_name == chemical.get("chemical_name")).one_or_none()
 
     if existing_chemical is None:
         schema = ChemicalSchema()
