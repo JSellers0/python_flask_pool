@@ -18,7 +18,7 @@ class ChemSchema(ma.ModelSchema):
 class Store(db.Model):
     storeid = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String(50), nullable=False)
-    
+
 class Chemicals_Purchase(db.Model):
     chempurchid = db.Column(db.Integer, primary_key=True)
     chemicalid = db.Column(db.Integer, db.ForeignKey("chemicals.chemicalid"), nullable=False)
@@ -45,7 +45,7 @@ class TestType(db.Model):
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
     chemtestid = db.Column(db.Integer, primary_key=True)
-    testtypeid = db.Column(db.Integer, db.ForeignKey("testtype.testtypeid"), nullable=False)
+    testtypeid = db.Column(db.Integer, nullable=False)
     chl_free = db.Column(db.Float(precision=2), nullable=False)
     ph = db.Column(db.Float(precision=2), nullable=False)
     alk = db.Column(db.Integer, nullable=False)
