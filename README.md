@@ -1,2 +1,2 @@
 # python_flask_pool
-Front end for pool data analysis
+Front end for pool data input and analysis

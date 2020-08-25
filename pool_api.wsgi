@@ -2,6 +2,6 @@
 import sys
 sys.path.insert(0, "/var/www/flask/python_flask_pool/")
 
-from web import routes
+from api import config
 
-application = routes.pool
+application = config.app
