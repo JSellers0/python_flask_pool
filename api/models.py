@@ -17,27 +17,27 @@ class ChemSchema(ma.ModelSchema):
 
 class Chemicals_Purchase(db.Model):
     chempurchid = db.Column(db.Integer, primary_key=True)
-    chemicalid = db.Column(db.Integer, db.Foreign_Key("chemicals.chemicalid"), nullable=False)
-    storeid = db.Column(db.Integer, db.Foreign_Key("store.storeid"), nullable=False)
+    chemicalid = db.Column(db.Integer, db.ForeignKey("chemicals.chemicalid"), nullable=False)
+    storeid = db.Column(db.Integer, db.ForeignKey("store.storeid"), nullable=False)
     purchase_date = db.Column(db.DateTime, nullable=False)
     purchase_qty = db.Column(db.Integer, nullable=False)
     purchase_cost = db.Column(db.Numeric(precision=6, scale=2), nullable=False)
 
 class ChemPurchSchema(ma.ModelSchema):
     class Meta:
-        model = Chemicals_Purchases
+        model = Chemicals_Purchase
         sqla_session = db.session
 
 class Chemical_Use(db.Model):
     chemuseid = db.Column(db.Integer, primary_key=True)
-    chemicalid = db.Column(db.Integer, db.Foreign_Key("chemicals.chemicalid"), nullable=False)
+    chemicalid = db.Column(db.Integer, db.ForeignKey("chemicals.chemicalid"), nullable=False)
     used_date = db.Column(db.DateTime, nullable=False)
     used_qty = db.Column(db.Integer, nullable=False)
 
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
     chemtestid = db.Column(db.Integer, primary_key=True)
-    testtypeid = db.Column(db.Integer, db.Foreign_Key("test_type.testtypeid"), nullable=False)
+    testtypeid = db.Column(db.Integer, db.ForeignKey("test_type.testtypeid"), nullable=False)
     chl_free = db.Column(db.Float(precision=2), nullable=False)
     ph = db.Column(db.Float(precision=2), nullable=False)
     alk = db.Column(db.Integer, nullable=False)
