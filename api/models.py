@@ -37,7 +37,7 @@ class Chemical_Use(db.Model):
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
     chemtestid = db.Column(db.Integer, primary_key=True)
-    testtypeid = db.Column(db.Integer, db.ForeignKey("test_type.testtypeid"), nullable=False)
+    testtypeid = db.Column(db.Integer, db.ForeignKey("testtype.testtypeid"), nullable=False)
     chl_free = db.Column(db.Float(precision=2), nullable=False)
     ph = db.Column(db.Float(precision=2), nullable=False)
     alk = db.Column(db.Integer, nullable=False)
@@ -45,7 +45,7 @@ class Test(db.Model):
     stab = db.Column(db.Integer)
     hrd = db.Column(db.Integer)
 
-class Test_Type(db.Model):
+class TestType(db.Model):
     testtypeid = db.Column(db.Integer, primary_key=True)
     test_name = db.Column(db.String(50), nullable=False)
 
