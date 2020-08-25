@@ -1,5 +1,5 @@
 from datetime import datetime
-from config import db, ma
+from api.config import db, ma
 
 class Chemical(db.Model):
     chemicalid = db.Column(db.Integer, primary_key=True)
