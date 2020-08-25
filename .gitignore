@@ -1,2 +1,2 @@
 pool.code-workspace
-web/__pycache__/*
+*/__pycache__/*
