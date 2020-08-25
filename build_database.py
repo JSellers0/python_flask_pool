@@ -1,4 +1,4 @@
-from config import db
+from api.config import db
 from api.models import (
     Chemical, 
     Chemical_Purchase, 

@@ -1,21 +1,21 @@
 from datetime import datetime
 from api.config import db, ma
 
-class Chemical(db.Model):
+class Chemicals(db.Model):
     chemicalid = db.Column(db.Integer, primary_key=True)
     chemical_name = db.Column(db.String(50), nullable=False)
     chemical_brand = db.Column(db.String(50), nullable=False)
     chemical_unit = db.Column(db.String(10), nullable=False)
 
     def __repr__(self):
-        return "Chemical({}, {}, {})".format(chemical_id, chemical_name, chemical_brand)
+        return "Chemical({}, {}, {})".format(chemicalid, chemical_name, chemical_brand)
 
 class ChemSchema(ma.ModelSchema):
     class Meta:
         model = Chemicals
         sqla_session = db.session
 
-class Chemical_Purchase(db.Model):
+class Chemicals_Purchase(db.Model):
     chempurchid = db.Column(db.Integer, primary_key=True)
     chemicalid = db.Column(db.Integer, db.Foreign_Key("chemicals.chemicalid"), nullable=False)
     storeid = db.Column(db.Integer, db.Foreign_Key("store.storeid"), nullable=False)
