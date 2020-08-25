@@ -1,10 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 
-from forms import *
-<<<<<<< HEAD
-
-=======
->>>>>>> 9987d6fb59543b411564cc05470595ccc7cec89a
+from web.forms import *
 
 pool = Flask(__name__)
 pool.secret_key = b';aeirja_)(_9u-a9jdfae90ej-e09!@aldjfa;'
