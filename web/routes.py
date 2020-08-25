@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 
-from forms import *
+from web.forms import *
 
 
 pool = Flask(__name__)
