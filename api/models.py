@@ -23,6 +23,10 @@ class Chemicals_Purchase(db.Model):
     purchase_qty = db.Column(db.Integer, nullable=False)
     purchase_cost = db.Column(db.Numeric(precision=6, scale=2), nullable=False)
 
+class Store(db.Model):
+    storeid = db.Column(db.Integer, primary_key=True)
+    store_name = db.Column(db.String(50), nullable=False)
+
 class ChemPurchSchema(ma.ModelSchema):
     class Meta:
         model = Chemicals_Purchase
