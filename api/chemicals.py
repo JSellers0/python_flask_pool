@@ -3,13 +3,13 @@ This is the chemical module and supports all REST actions for the chemical table
 """
 
 from flask import abort
-from api.models import Chemical, ChemicalSchema
+from api.models import Chemicals, ChemSchema
 from api.config import db
 
 def read_all():
-    chemicals = Chemical.query.order_by(Chemical.chemical_name).all()
+    chemicals = Chemicals.query.order_by(Chemicals.chemical_name).all()
 
-    chemical_schema = ChemicalSchema(many=True)
+    chemical_schema = ChemSchema(many=True)
     data = chemical_schema.dump(chemicals)
     return data
 
@@ -29,11 +29,11 @@ def read_brand(chemical_brand):
 
 def create(chemical):
     # ToDo: Filter by name and brand
-    existing_chemical = Chemical.query.filter(Chemical.chemical_name == chemical.get("chemical_name")).one_or_none()
+    existing_chemical = Chemicals.query.filter(Chemicals.chemical_name == chemical.get("chemical_name")).one_or_none()
 
     if existing_chemical is None:
-        schema = ChemicalSchema()
-        new_chemical = schema.load({"chemical_name": chemical_name}, session=db.session)
+        schema = ChemSchema()
+        new_chemical = schema.load({"chemical_name": chemical.get("chemical_name"))}, session=db.session)
 
         db.session.add(new_chemical)
         db.session.commit()
@@ -43,7 +43,7 @@ def create(chemical):
     else:
         abort(
             409,
-            "Chemical {} already exists.".format(chemical_name)
+            "Chemical {} already exists.".format(chemical.get("chemical_name")))
         )
 
 def update(chemical_id, chemical):
