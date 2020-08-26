@@ -133,7 +133,7 @@ paths:
       summary: Read Chemicals by brand.
       description: Return a list of Chemicals matching the brand submitted.
       parameters:
-        - brand: chemical_brand
+        - name: chemical_brand
           in: path
           description: Brand of the Chemical to search and return.
           type: string
