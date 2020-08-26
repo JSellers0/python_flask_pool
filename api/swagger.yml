@@ -160,7 +160,7 @@ paths:
                 
   /tests/types:
     get:
-      operationId: api.tests.get_types
+      operationId: api.objects.tests.get_types
       tags:
         - Tests
       summary: Get Test Types.
