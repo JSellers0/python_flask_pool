@@ -43,7 +43,7 @@ def create(chemical):
     else:
         abort(
             409,
-            "Chemical {} already exists.".format(chemical.get("chemical_name")))
+            "Chemical {} already exists.".format(chemical.get("chemical_name"))
         )
 
 def update(chemical_id, chemical):
