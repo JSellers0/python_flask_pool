@@ -12,7 +12,7 @@ paths:
 
   /chemicals:
     get:
-      operationId: api.chemicals.read_all
+      operationId: api.objects.chemicals.read_all
       tags:
         - Chemicals
       summary: Read all Chemicals.
@@ -37,7 +37,7 @@ paths:
                   type: string
                   description: Unit of measurement for the Chemical returned.
     post:
-      operationId: api.chemicals.create
+      operationId: api.objects.chemicals.create
       tags:
         - Chemicals
       summary: Create a Chemical.
@@ -66,7 +66,7 @@ paths:
           description: Submitted Chemical already exists in Chemicals table.
   /chemicals/{chemicalid}:
     get:
-      operationId: api.chemicals.read_id
+      operationId: api.objects.chemicals.read_id
       tags:
         - Chemicals
       summary: Read Chemical by ID.
@@ -97,7 +97,7 @@ paths:
                 description: Unit of measurement for the Chemical returned.
   /chemicals/{chemical_name}:
     get:
-      operationId: api.chemicals.read_name
+      operationId: api.objects.chemicals.read_name
       tags:
         - Chemicals
       summary: Read Chemicals by name.
@@ -128,7 +128,7 @@ paths:
                 description: Unit of measurement for the Chemical returned.
   /chemicals/{chemical_brand}:
     get:
-      operationId: api.chemicals.read_brand
+      operationId: api.objects.chemicals.read_brand
       tags:
         - Chemicals
       summary: Read Chemicals by brand.
