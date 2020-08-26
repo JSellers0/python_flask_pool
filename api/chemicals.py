@@ -33,7 +33,7 @@ def create(chemical):
 
     if existing_chemical is None:
         schema = ChemSchema()
-        new_chemical = schema.load({"chemical_name": chemical.get("chemical_name"))}, session=db.session)
+        new_chemical = schema.load({"chemical_name": chemical.get("chemical_name")}, session=db.session)
 
         db.session.add(new_chemical)
         db.session.commit()
