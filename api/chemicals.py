@@ -14,7 +14,12 @@ def read_all():
     return data
 
 def read_id(chemical_id):
-    pass
+    return {
+        "chemicalid": 1, 
+        "chemical_name": "test chem", 
+        "chemical_brand": "test brand",
+        "chemical_unit": "pounds"
+        }
 
 def read_name(chemical_name):
     pass
