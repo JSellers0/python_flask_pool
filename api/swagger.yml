@@ -253,15 +253,11 @@ paths:
       description: Create a new type of test for submitting testing data.
       parameters:
         - name: test_type
-          in: body
-          description: JSON with Test Name to create.
-          required: True
-          schema:
-            type: object
-            properties:
-              test_name:
-                type: string
-                description: Name of the test to create.
+          in: query
+          name: test_name
+          description: Name of the test to create.
+          type: string
+          required: true
       responses:
         200:
           description: Successfully created new Test.

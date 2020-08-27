@@ -12,7 +12,7 @@ class API():
         return data
 
     def create_test_type(self, test):
-        result = requests.post(api_route + "tests/types", json=test)
+        result = requests.post(api_route + "tests/types", params=test)
         if result.status_code == 200:
             return result.status_code
         elif result.status_code == 409:
