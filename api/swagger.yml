@@ -246,7 +246,7 @@ paths:
                   type: string
                   description: Name of the Test returned.
     post:
-      operationID: api.objects.tests.create_type
+      operationId: api.objects.tests.create_type
       tags:
         - Tests
       summary: Create Test Type
