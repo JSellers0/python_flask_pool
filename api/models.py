@@ -42,6 +42,9 @@ class TestType(db.Model):
     testtypeid = db.Column(db.Integer, primary_key=True)
     test_name = db.Column(db.String(50), nullable=False)
 
+    def __repr__(self):
+        return "Test({} - {})".format(self.testtypeid, self.test_name)
+
 class TestTypeSchema(ma.ModelSchema):
     class Meta:
         model = TestType

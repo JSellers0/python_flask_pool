@@ -17,7 +17,7 @@ def create_type(test_type):
 
     if existing_type is None:
         ttschema = TestTypeSchema()
-        new_test = ttschema.load(test_type, session=db.session)
+        new_test = ttschema.load({"test_name": test_name}, session=db.session)
 
         db.session.add(new_test)
         db.session.commit()
