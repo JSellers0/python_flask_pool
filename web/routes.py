@@ -1,6 +1,9 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 
 from web.forms import *
+from web.db import API
+
+pool_api = API()
 
 pool = Flask(__name__)
 pool.secret_key = b';aeirja_)(_9u-a9jdfae90ej-e09!@aldjfa;'
@@ -14,9 +17,19 @@ def test():
     form = Test_Form()
     return render_template("test.html", form=form)
 
-@pool.route("/test/new")
+@pool.route("/test/new", methods=["GET", "POST"])
 def test_new():
     form = Test_New_Form()
+    if form.validate_on_submit():
+        new_test = {"test_name": form.name.data}
+        response = pool_api.create_test_type(new_test)
+        if response == 200:
+            flash("Test {} created successfully".format(form.name.data), "success")
+            return redirect(url_for(test))
+        elif response == 409:
+            flash("Test Name already exists.", "danger")
+        else:
+            flash("Unknown Error.  I need to build error handling.", "danger")
     return render_template("test_new.html", form=form)
 
 @pool.route("/maint")
