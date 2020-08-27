@@ -126,7 +126,7 @@ paths:
                 description: Unit of Measurement to apply on update.
       responses:
         200:
-          description:  Successfully applied Update to ID submitted.
+          description: Successfully applied Update to ID submitted.
           schema:
             properties:
               chemicalid:
@@ -139,7 +139,7 @@ paths:
                 type: string
                 description: Updated Chemical brand.
               chemical_units:
-                string:
+                type: string
                 description: Updated Chemical Units of Measurement
         409:
           description: Chemical already exists with Name and Brand submitted.
@@ -245,7 +245,7 @@ paths:
                 test_name:
                   type: string
                   description: Name of the Test returned.
-    put:
+    post:
       operationID: api.objects.tests.create_type
       tags:
         - Tests
