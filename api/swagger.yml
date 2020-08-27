@@ -64,6 +64,7 @@ paths:
           description: Successfully inserted Chemical into Chemicals table.
         409:
           description: Submitted Chemical already exists in Chemicals table.
+  
   /chemicals/{chemicalid}:
     get:
       operationId: api.objects.chemicals.read_id
@@ -95,6 +96,71 @@ paths:
               chemical_unit:
                 type: string
                 description: Unit of measurement for the Chemical returned.
+    put:
+      operationId: api.objects.chemicals.update
+      tags:
+        - Chemicals
+      summary: Update Chemical by ID.
+      description: Update the data for the Chemical that matches the ID submitted.
+      parameters:
+        - name: chemicalid
+          in: path
+          description: ID of Chemical to update.
+          type: integer
+          required: True
+        - name: chemical
+          in: body
+          description: Chemical object with update data to apply.
+          required: True
+          schema:
+            type: object
+            properties:
+              chemical_name:
+                type: string
+                description: Name of Chemical to apply on update.
+              chemical_brand:
+                type: string
+                description: Brand of Chemical to apply on update.
+              chemical_units:
+                type: string
+                description: Unit of Measurement to apply on update.
+      responses:
+        200:
+          description:  Successfully applied Update to ID submitted.
+          schema:
+            properties:
+              chemicalid:
+                type: integer
+                description: ID of the Chemical updated.
+              chemical_name:
+                type: string
+                description: Updated Chemical name.
+              chemical_brand:
+                type: string
+                description: Updated Chemical brand.
+              chemical_units:
+                string:
+                description: Updated Chemical Units of Measurement
+        409:
+          description: Chemical already exists with Name and Brand submitted.
+        404:
+          description: Chemical does not exist at ID submitted.
+    delete:
+      operationId: api.objects.chemicals.delete
+      tags:
+        - Chemicals
+      summary: Delete a Chemical.
+      description: Delete the Chemical that matches the ID submitted.
+      parameters:
+        - name: chemicalid
+          in: path
+          type: integer
+          description: ID of the Chemical to delete.
+          required: True
+      responses:
+        200:
+          description: Successfully deleted Chemical at ID submitted.
+
   /chemicals/{chemical_name}:
     get:
       operationId: api.objects.chemicals.read_name
@@ -126,6 +192,7 @@ paths:
               chemical_unit:
                 type: string
                 description: Unit of measurement for the Chemical returned.
+
   /chemicals/{chemical_brand}:
     get:
       operationId: api.objects.chemicals.read_brand
@@ -178,6 +245,27 @@ paths:
                 test_name:
                   type: string
                   description: Name of the Test returned.
-                  
+    put:
+      operationID: api.objects.tests.create_type
+      tags:
+        - Tests
+      summary: Create Test Type
+      description: Create a new type of test for submitting testing data.
+      parameters:
+        - name: test_type
+          in: body
+          description: JSON with Test Name to create.
+          required: True
+          schema:
+            type: object
+            properties:
+              test_name:
+                type: string
+                description: Name of the test to create.
+      responses:
+        200:
+          description: Successfully created new Test.
+        409:
+          description: Test with submitted name already exists.
 
 

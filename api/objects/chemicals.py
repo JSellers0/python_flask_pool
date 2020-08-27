@@ -63,10 +63,10 @@ def create(chemical):
         ).one_or_none()
 
     if existing_chemical is None:
-        schema = ChemSchema()
-        new_chemical = schema.load(chemical, session=db.session)
+        chem_schema = ChemSchema()
+        new_chemical = chem_schema.load(chemical, session=db.session)
 
-        db.session.add(chemical)
+        db.session.add(new_chemical)
         db.session.commit()
 
         return 201
