@@ -1,6 +1,5 @@
 from datetime import datetime
-from api.config import db, ma
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from api.config import db
 
 class Chemicals(db.Model):
     chemicalid = db.Column(db.Integer, primary_key=True)
@@ -10,11 +9,6 @@ class Chemicals(db.Model):
 
     def __repr__(self):
         return "Chemical({}, {}, {})".format(chemicalid, chemical_name, chemical_brand)
-
-class ChemSchema(ma.ModelSchema):
-    class Meta:
-        model = Chemicals
-        sqla_session = db.session
 
 class Store(db.Model):
     storeid = db.Column(db.Integer, primary_key=True)
@@ -28,11 +22,6 @@ class Chemicals_Purchase(db.Model):
     purchase_qty = db.Column(db.Integer, nullable=False)
     purchase_cost = db.Column(db.Numeric(precision=6, scale=2), nullable=False)
 
-class ChemPurchSchema(ma.ModelSchema):
-    class Meta:
-        model = Chemicals_Purchase
-        sqla_session = db.session
-
 class Chemical_Use(db.Model):
     chemuseid = db.Column(db.Integer, primary_key=True)
     chemicalid = db.Column(db.Integer, db.ForeignKey("chemicals.chemicalid"), nullable=False)
@@ -45,12 +34,6 @@ class TestType(db.Model):
 
     def __repr__(self):
         return "Test({} - {})".format(self.testtypeid, self.test_name)
-
-class TestTypeSchema(SQLAlchemyAutoSchema):
-    class Meta:
-        model = TestType
-        include_relationships = True
-        load_instance = True
 
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
