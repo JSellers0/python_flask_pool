@@ -38,7 +38,7 @@ class Chemical_Use(db.Model):
     used_date = db.Column(db.DateTime, nullable=False)
     used_qty = db.Column(db.Integer, nullable=False)
 
-class Test_Type(db.Model):
+class TestType(db.Model):
     testtypeid = db.Column(db.Integer, primary_key=True)
     test_name = db.Column(db.String(50), nullable=False)
 
@@ -47,7 +47,7 @@ class Test_Type(db.Model):
 
 class TestTypeSchema(ma.ModelSchema):
     class Meta:
-        model = Test_Type
+        model = TestType
         sqla_session = db.session
 
 class Test(db.Model):
