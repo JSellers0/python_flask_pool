@@ -1,5 +1,6 @@
 from datetime import datetime
 from api.config import db, ma
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 class Chemicals(db.Model):
     chemicalid = db.Column(db.Integer, primary_key=True)
@@ -45,10 +46,11 @@ class TestType(db.Model):
     def __repr__(self):
         return "Test({} - {})".format(self.testtypeid, self.test_name)
 
-class TestTypeSchema(ma.ModelSchema):
+class TestTypeSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = TestType
-        sqla_session = db.session
+        include_relationships = True
+        load_instance = True
 
 class Test(db.Model):
     # ToDo: Lookup callback to add test_name
