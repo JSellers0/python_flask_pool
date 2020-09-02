@@ -11,7 +11,7 @@ connex_app = connexion.App(__name__, specification_dir=basedir)
 app = connex_app.app
 
 # ToDo: Figure out how to set Env Variables and change poolAPI Password
-db_uri = "mysql://poolAPI:" + "Os&3MQ5U&H8LdaN7R6mf2" + "@localhost/pool"
+db_uri = "mysql://poolAPI:" + "Ok3$W015I5@q9BD9fFhvR" + "@localhost/pool"
 
 app.config["SQLALCHEMY_ECHO"] = True
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
